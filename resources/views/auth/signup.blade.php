@@ -3,6 +3,7 @@
 @section('content')
     <div class="row">
     <div class="col-lg-6">
+    <h1>Signup</h1>
         <form class="form-vertical" role="form" method="post" action="{{ route('auth.signup') }}">
             {{ csrf_field() }}
             <div class="form-group {{ $errors->has('email') ? 'has-error' : ''}}">

@@ -28,5 +28,23 @@ class AuthController extends Controller
 		]);
 		return redirect()->route('home')
 		->with('info', 'Your account has been created and now you can sign in.');
+	}	
+
+	public function getSignin()
+	{
+		return view('auth.signin');
+	}	
+
+	public function postSignin(Request $request)
+	{
+		$this->validate($request, [
+			'email' 	=> 'required',
+			'password' 	=> 'required',
+		]);
+
+		if (!auth()->attempt($request->only(['email', 'password']), $request->has('remember'))) {
+			return redirect()->back()->with('info', 'Could not sign you in with those details.');
+		}
+		return redirect()->route('home')->with('info', 'You now sign in.');
 	}
 }
