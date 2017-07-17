@@ -2,7 +2,7 @@
 <nav class="navbar navbar-default" role="navigation">
     <div class="container">
         <div class="navbar-header">
-            <a class="navbar-brand" href="#">Chatty</a>
+            <a class="navbar-brand" href="{{ route('home') }}">Chatty</a>
         </div>
         <div class="collapse navbar-collapse">
             @if (Auth::check())
@@ -10,7 +10,7 @@
                     <li><a href="#">Timeline</a></li>
                     <li><a href="#">Friends</a></li>
                 </ul>
-                <form class="navbar-form navbar-left" role="search" action="#">
+                <form class="navbar-form navbar-left" role="search" action="{{ route('search.results') }}">
                     <div class="form-group">
                         <input type="text" name="query" class="form-control" placeholder="Find people">
                     </div>
@@ -22,7 +22,7 @@
                     <li><a href="#">{{ Auth::user()->getNameOrUsername() }}</a></li>
                     <li><a href="#">Update profile</a></li>
                     <li><a href="{{ route('auth.signout') }}">Sign out</a></li>
-                @else 
+                @else
                     <li><a href="{{ route('auth.signup') }}">Sign up</a></li>
                     <li><a href="{{ route('auth.signin') }}">Sign in</a></li>
                 @endif
