@@ -9,21 +9,25 @@ Route::get('/', [
 * Authentication
 */
 Route::get('/signup', [
-	'uses' 	=> 'AuthController@getSignup',
-	'as'	=> 'auth.signup'
+	'uses' 			=> 'AuthController@getSignup',
+	'as'			=> 'auth.signup',
+	'middleware'	=> ['guest'],
 ]);
 
 Route::post('/signup', [
-	'uses' 	=> 'AuthController@postSignup'
+	'uses' 			=> 'AuthController@postSignup',
+	'middleware'	=> ['guest'],
 ]);
 
 Route::get('/signin', [
 	'uses' 	=> 'AuthController@getSignin',
-	'as'	=> 'auth.signin'
+	'as'	=> 'auth.signin',
+	'middleware'	=> ['guest'],
 ]);
 
 Route::post('/signin', [
-	'uses' 	=> 'AuthController@postSignin'
+	'uses' 	=> 'AuthController@postSignin',
+	'middleware'	=> ['guest'],
 ]);
 
 Route::get('/signout', [
