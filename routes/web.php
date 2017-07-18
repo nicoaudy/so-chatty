@@ -61,3 +61,12 @@ Route::post('/profile/edit', [
 	'uses' 			=> 'ProfileController@postEdit',
 	'middleware'	=> ['auth'],
 ]);
+
+/*
+* Friends
+*/
+Route::get('/friends', [
+	'uses' 			=> 'FriendController@index',
+	'as'			=> 'friend.index',
+	'middleware'	=> ['auth'],
+]);
