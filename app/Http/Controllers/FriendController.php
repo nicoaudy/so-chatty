@@ -8,7 +8,8 @@ class FriendController extends Controller
 {
     public function index()
     {
-        $friends = auth()->user()->friends();
-        return view('friends.index', compact('friends'));
+        $friends 	= auth()->user()->friends();
+        $requests 	= auth()->user()->friendRequests();
+        return view('friends.index', compact('friends', 'requests'));
     }
 }
