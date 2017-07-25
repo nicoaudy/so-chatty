@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Status extends Model
 {
 	protected $fillable = [
-		'body'
+		'body', 'parent_id', 'user_id'
 	];
 
 	public function user()
@@ -16,9 +16,9 @@ class Status extends Model
 	}
 
 	public function scopeNotReply($query)
-	{
-		return $query->whereNull('parent_id');
-	}
+    {
+        return $query->whereNull('parent_id');
+    }
 
     public function replies()
     {

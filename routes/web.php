@@ -93,7 +93,7 @@ Route::post('/status', [
 ]);
 
 Route::post('/status/{statusId}/reply', [
-	'uses' 			=> 'StatusController@postReply',
-	'as'			=> 'status.reply',
-	'middleware'	=> ['auth'],
+    'uses' => '\Chatty\Http\Controllers\StatusController@postReply',
+    'as' => 'status.reply',
+    'middleware' => ['auth'],
 ]);

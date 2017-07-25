@@ -51,7 +51,7 @@ class User extends Authenticatable
 
     public function statuses()
     {
-        return $this->hasMany(Status::class, 'user_id');
+        return $this->hasMany('Chatty\Models\Status', 'user_id');
     }
 
     public function friendsOfMine()
