@@ -104,4 +104,9 @@ class User extends Authenticatable
     {
         return (bool) $this->friends()->where('id', $user->id)->count();
     }
+
+    public function likes()
+    {
+        return $this->morphMany(Like::class, 'likeable');
+    }    
 }

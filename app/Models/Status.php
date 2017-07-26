@@ -24,4 +24,9 @@ class Status extends Model
     {
         return $this->hasMany('Chatty\Models\Status', 'parent_id');
     }
+
+    public function likes()
+    {
+    	return $this->morphMany(Like::class, 'likeable');
+    }
 }
