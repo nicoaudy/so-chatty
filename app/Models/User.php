@@ -2,6 +2,7 @@
 
 namespace Chatty\Models;
 
+use Chatty\Models\Status;
 use Chatty\Models\User;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -107,6 +108,11 @@ class User extends Authenticatable
 
     public function likes()
     {
-        return $this->morphMany(Like::class, 'likeable');
+        return $this->hasMany(Like::class, 'user_id');
+    }
+
+    public function hasLikedStatus(Status $status)
+    {
+        return (bool) $status->likes->where('likeable_id', $status->id)->where('likeable_type', get_class($status))->where('user_id', $this->id)->count();
     }    
 }
