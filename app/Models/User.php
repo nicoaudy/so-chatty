@@ -89,9 +89,16 @@ class User extends Authenticatable
     {
         return (bool) $this->friendRequests()->where('id', $user->id)->count();
     }
+
     public function addFriend(User $user)
     {
-        return $this->friendOf()->attach($user->id);
+        $this->friendOf()->attach($user->id);
+    }    
+
+    public function deleteFriend(User $user)
+    {
+        $this->friendOf()->detach($user->id);
+        $this->friendsOfMine()->detach($user->id);
     }
 
     public function acceptFriendRequest(User $user)
